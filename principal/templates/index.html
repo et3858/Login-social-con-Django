@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login social con python y django</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+	<style>
+	.link-social-login{
+		color: white;
+		display: inline-block;
+		width: 150px;
+		padding: 8px 0 8px 10px;
+		text-decoration: none;
+	}
+	.facebook{
+		background: blue;
+	}
+	.twitter{
+		background: lightblue;
+	}
+	</style>
+</head>
+<body>
+	<h1>Login social con python y django</h1>
+
+
+	<p>
+		{% if not user.is_authenticated %}
+			<p>
+				<a class="link-social-login twitter" href="{% url 'social:begin' 'twitter' %}">Twitter Login</a>
+			</p>
+			<p>
+				<a class="link-social-login facebook" href="{% url 'social:begin' 'facebook' %}">Facebook Login</a>
+			</p>
+		{% else %}
+			<h3>Bienvenido {{ user }}</h3>
+			<a href="/salir/">Log out</a>
+		{% endif %}
+	</p>
+	
+</body>
+</html>
